@@ -146,8 +146,6 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
 
 </div>
 
----
-
 --- 
 
 ## Justificativa da Normalização 
@@ -443,7 +441,7 @@ Para respeitar as dependências de chaves estrangeiras (`FOREIGN KEY`), o script
 ### Operações Práticas de Atualização e Exclusão (`03_dml_operacoes.sql`) 
 
 O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDATE` e `DELETE`) associados a situações reais do fluxo de trabalho da ONG de Proteção Animal. 
-
+<br> 
 #### 1. Operações de Atualização (`UPDATE`)
 
 * **Atualização de Status Clínico do Animal (RN):**
@@ -460,10 +458,8 @@ O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDA
 
 * **Manutenção Cadastral de Pessoas:**
   * *Pergunta de negócio:* Como atualizar os canais de contato (telefone e e-mail) de um doador ou voluntário cadastrado?
-  * *Comando:* `UPDATE Pessoa SET Telefone = '16999998888', Email = 'ana.souza_atualizado@email.com' WHERE ID_Pessoa = 1;`
-
---- 
-
+  * *Comando:* `UPDATE Pessoa SET Telefone = '16999998888', Email = 'ana.souza_atualizado@email.com' WHERE ID_Pessoa = 1;` 
+<br> 
 #### 2. Operações de Exclusão (`DELETE`) 
 * **Remoção de Adoção Cancelada:**
   * *Pergunta de negócio:* Como remover do banco de dados um registro de processo de adoção cancelado antes de sua efetivação?
