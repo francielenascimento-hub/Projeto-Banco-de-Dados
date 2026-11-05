@@ -22,13 +22,68 @@
 
 ---
 
-### Sobre o Projeto 
+<div align="center">
+
+  ## SUMÁRIO
+
+</div>
+
+
+
+---
+
+## Contexto e Problems 
 
 <div align="justify">
   
-Este repositório contém a solução completa de banco de dados relacional desenvolvida para a gestão operacional, médica e financeira de uma **ONG de Proteção Animal**. O projeto abrange desde o levantamento das necessidades de informação e modelagem conceitual até a implementação física e programação procedimental em ambiente **Oracle**. O sistema foi projetado para responder a perguntas reais do negócio, garantindo a integridade dos dados, a rastreabilidade dos animais resgatados e a transparência no controle de recursos.
+ONGs de proteção animal recebem, ao longo do tempo, animais resgatados que precisam de tratamento veterinário, vacinação, abrigo e, por fim, de um lar. Ao mesmo tempo, dependem de doações, de voluntários e de uma diretoria
+para funcionar. Em muitas organizações, essas informações ficam dispersas em planilhas, cadernos e mensagens de aplicativos, o que gera:
+
+- dificuldade em saber a situação atual de cada animal (em tratamento, disponível, em processo de adoção, adotado);
+- falta de histórico de vacinas e atendimentos veterinários;
+- risco de duas adoções simultâneas para o mesmo animal;
+- falta de controle sobre a lotação das unidades e o número de voluntários;
+- pouca transparência sobre quanto foi arrecadado e quanto foi gasto.
+
+Este projeto propõe um banco de dados relacional em Oracle que centraliza essas informações, garante sua consistência por meio de restrições de integridade e regras de negócio, e permite responder a perguntas de gestão por meio de consultas SQL.
 
 </div>
+
+---
+
+## Público-alvo
+
+<div align="justify">
+
+O banco foi pensado para quem coordena a ONG no dia a dia:
+
+- **Coordenação e diretoria:** acompanham animais, adoções, lotação das
+  unidades, doações e despesas para tomar decisões e prestar contas.
+- **Voluntários responsáveis pelo cadastro:** registram resgates, vacinas,
+  atendimentos veterinários e escalas de voluntariado.
+- **Responsável financeiro (tesoureiro):** consulta doações recebidas e
+  despesas por unidade e por tipo.
+
+</div>
+
+---
+
+## Necessidades de Informação
+
+O banco deve responder, entre outras, às seguintes perguntas:
+
+1. Quais animais estão disponíveis para adoção em cada unidade?
+2. Qual é a situação atual (status) de cada animal e como ela mudou ao longo do tempo?
+3. Quais adoções estão em análise, concluídas ou foram devolvidas?
+4. Quais animais não possuem nenhuma vacina registrada?
+5. Quais animais estão com tratamento veterinário em andamento?
+6. Qual é a ocupação de cada unidade em relação à sua capacidade máxima?
+7. Quantos voluntários ativos cada unidade possui, e em quais funções?
+8. Qual o total arrecadado em doações por mês e por forma de pagamento?
+9. Qual o total de despesas por unidade e por tipo?
+10. Quem são os diretores atuais de cada unidade e em que função?
+
+As consultas que respondem a essas perguntas estão em `04_consultas.sql`.
 
 ---
 
