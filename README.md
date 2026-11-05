@@ -10,17 +10,17 @@
 
 ---
 
-<p align="center">
+<div align="center">
 
   # Sistema de Gestão para ONG de Proteção Animal
 
-</p>
+</div>
 
-<p align="center">
+<div align="center">
   
   ## Projeto Prático de Banco de Dados I
   
-</p>
+</div>
 
 **Curso:** Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — FATEC Ribeirão Preto<br>
 **Orientadora:** Profa. Me. Eliza Bomfim<br>
