@@ -54,6 +54,8 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 </div>
 
+---
+
 ### Tecnologias e Recursos Utilizados 
 
 <div align="justify">
@@ -67,6 +69,8 @@ Este repositório contém a solução completa de banco de dados relacional dese
 **Modelagem:** Diagrama Entidade-Relacionamento (DER) e Modelo Lógico Relacional normalizado (3FN).
 
 </div>
+
+---
 
 ### Estrutura do Repositório 
 
