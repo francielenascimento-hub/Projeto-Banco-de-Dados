@@ -91,34 +91,57 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 ---
 
-1. Modelo Conceitual💡
+### 1. Modelo Conceitual
 
-Conceito: O que são MER e DER?
+#### Conceito: O que são MER e DER?
 
-MER (Modelo Entidade-Relacionamento): É a especificação conceitual e abstrata do domínio de negócio1. Ele identifica quais entidades do mundo real precisam ser registradas no sistema, quais atributos descrevem essas entidades e como elas se relacionam sintaticamente, sem se preocupar com restrições técnicas ou implementação física em um SGBD específico.
+<div align="justify">
 
-DER (Diagrama Entidade-Relacionamento): É a representação visual e gráfica do MER13. Utiliza notação conceitual (como a notação de Peter Chen), onde as entidades são desenhadas em retângulos, os atributos em elipses/bolinhas, os relacionamentos em losangos e as linhas de associação indicam as cardinalidades mínimas e máximas do sistema1.
+**MER (Modelo Entidade-Relacionamento):** É a especificação conceitual e abstrata do domínio de negócio1. Ele identifica quais entidades do mundo real precisam ser registradas no sistema, quais atributos descrevem essas entidades e como elas se relacionam sintaticamente, sem se preocupar com restrições técnicas ou implementação física em um SGBD específico.
 
-Modelo Conceitual do Projeto (ONG de Proteção Animal)
+**DER (Diagrama Entidade-Relacionamento):** É a representação visual e gráfica do MER13. Utiliza notação conceitual (como a notação de Peter Chen), onde as entidades são desenhadas em retângulos, os atributos em elipses/bolinhas, os relacionamentos em losangos e as linhas de associação indicam as cardinalidades mínimas e máximas do sistema1.
+
+</div>
+
+#### 1.1 Modelo Conceitual do Projeto (ONG de Proteção Animal)
 
 O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operacional, médico e administrativo da instituição, estando organizado visualmente em 5 blocos funcionais/temáticos:
-🟨 Atores Principais / Cadastros Base (Amarelo): Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco4. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.<br>
-🟧 Processos e Transações do Sistema (Laranja): Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.<br>
-🟪 Estrutura Física e Operacional (Roxo): Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
-🟦 Gestão e Governança (Azul): Composto por Mandato_Diretoria e Historico_Status4. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
-🟩 Registros Médicos e Financeiros (Verde): Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
+🟨 *Atores Principais / Cadastros Base (Amarelo):* Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco4. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.<br>
+🟧 *Processos e Transações do Sistema (Laranja):* Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.<br>
+🟪 *Estrutura Física e Operacional (Roxo):* Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
+🟦 *Gestão e Governança (Azul):* Composto por Mandato_Diretoria e Historico_Status. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
+🟩 *Registros Médicos e Financeiros (Verde):* Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
 
-2. Modelo Lógico Relacional💡
+### 2. Modelo Lógico Relacional
 
-Conceito: O que é o Modelo Lógico?O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual para o modelo relacional de banco de dados18. Ele converte entidades em tabelas, atributos em colunas com tipos de dados definidos (como VARCHAR2, NUMBER, DATE, CHAR) e estabelece a integridade referencial por meio de Chaves Primárias (PK) e Chaves Estrangeiras (FK)1more_horiz. Nessa etapa, aplicam-se as Formas Normais (1FN, 2FN e 3FN) para eliminar redundâncias e evitar anomalias de inserção, alteração e exclusão18.
+#### Conceito: O que é o Modelo Lógico?
 
-🐾 Modelo Lógico do Projeto (ONG de Proteção Animal)
+<div align="justify">
 
-Na conversão do DER para a estrutura relacional do projeto, as entidades e associações foram mapeadas conforme as seguintes diretrizes técnicas119:Mapeamento de Tabelas e Chaves: Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY)5more_horiz. As relações de cardinalidade $1:N$ e $N:N$ foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario)16more_horiz.Normalização Aplicada:Especie e Raca: Foram separadas em tabelas próprias para eliminar a repetição de nomes de espécies/raças na tabela Animal (atendendo à 2FN e 3FN)1more_horiz.Endereco: Isolado em uma tabela dedicada, permitindo o compartilhamento e a padronização de localização entre Pessoa e Unidade_ONG1more_horiz.Historico_Status: Tabela criada especificamente para auditoria e registro de histórico de transição de status dos animais1more_horiz.Tipagem dos Atributos no Oracle: Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas5more_horiz. 
+O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual para o modelo relacional de banco de dados. Ele converte entidades em tabelas, atributos em colunas com tipos de dados definidos (como VARCHAR2, NUMBER, DATE, CHAR) e estabelece a integridade referencial por meio de Chaves Primárias (PK) e Chaves Estrangeiras (FK)1more_horiz. Nessa etapa, aplicam-se as Formas Normais (1FN, 2FN e 3FN) para eliminar redundâncias e evitar anomalias de inserção, alteração e exclusão18.
 
---- 
+</div>
 
-## 📥 Carga Inicial de Dados de Teste (`02_dml_carga.sql`) 
+#### Modelo Lógico do Projeto (ONG de Proteção Animal)
+
+Na conversão do DER para a estrutura relacional do projeto, as entidades e associações foram mapeadas conforme as seguintes diretrizes técnicas119:
+
+* **Mapeamento de Tabelas e Chaves:** Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY). As relações de cardinalidade ´1:N´ e ´N:N´ foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario).
+
+* **Normalização Aplicada:**
+  * ´Especie e Raca:´ Foram separadas em tabelas próprias para eliminar a repetição de nomes de espécies/raças na tabela Animal (atendendo à 2FN e 3FN).
+  * ´Endereco:´ Isolado em uma tabela dedicada, permitindo o compartilhamento e a padronização de localização entre Pessoa e Unidade_ONG.
+  * ´Historico_Status:´ Tabela criada especificamente para auditoria e registro de histórico de transição de status dos animais.
+
+* **Tipagem dos Atributos no Oracle:** Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas5more_horiz. 
+
+---
+
+
+
+---
+
+### Carga Inicial de Dados de Teste (`02_dml_carga.sql`) 
 
 A povoação inicial do banco de dados foi projetada para garantir volume e relevância técnica suficientes para a execução de relatórios, consultas complexas com `JOIN` e testes de restrições de integridade. 
 
@@ -131,43 +154,46 @@ Para respeitar as dependências de chaves estrangeiras (`FOREIGN KEY`), o script
 
 --- 
 
-## 🔄 Operações Práticas de Atualização e Exclusão (`03_dml_operacoes.sql`) 
+### Operações Práticas de Atualização e Exclusão (`03_dml_operacoes.sql`) 
 
 O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDATE` e `DELETE`) associados a situações reais do fluxo de trabalho da ONG de Proteção Animal. 
 
-### 1. Operações de Atualização (`UPDATE`)
+#### 1. Operações de Atualização (`UPDATE`)
 
 * **Atualização de Status Clínico do Animal (RN):**
-* * *Pergunta de negócio:* Como atualizar o status de um animal que concluiu o tratamento médico para que ele fique disponível para adoção?
-* * *Comando:* `UPDATE Animal SET Status = 'DISPONIVEL' WHERE ID_Animal = 2 AND Status = 'EM_TRATAMENTO';` 
+  * *Pergunta de negócio:* Como atualizar o status de um animal que concluiu o tratamento médico para que ele fique disponível para adoção?
+  * *Comando:* `UPDATE Animal SET Status = 'DISPONIVEL' WHERE ID_Animal = 2 AND Status = 'EM_TRATAMENTO';` 
 
 * **Finalização Formal de Adoção:**
-* * *Pergunta de negócio:* Como aprovar e concluir formalmente um processo de adoção em análise, registrando a data de conclusão?
-* * *Comando:* `UPDATE Adocao SET Status = 'CONCLUIDA', Data_Conclusao = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Adocao = 2 AND Status = 'EM_ANALISE';`
+  * *Pergunta de negócio:* Como aprovar e concluir formalmente um processo de adoção em análise, registrando a data de conclusão?
+  * *Comando:* `UPDATE Adocao SET Status = 'CONCLUIDA', Data_Conclusao = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Adocao = 2 AND Status = 'EM_ANALISE';`
 
 * **Encerramento de Vínculo de Voluntariado:**
-* * *Pergunta de negócio:* Como registrar a data de encerramento do trabalho de um voluntário que se desligou da instituição?
-* * *Comando:* `UPDATE Voluntariado SET Data_Fim = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Voluntariado = 1 AND Data_Fim IS NULL;`
+  * *Pergunta de negócio:* Como registrar a data de encerramento do trabalho de um voluntário que se desligou da instituição?
+  * *Comando:* `UPDATE Voluntariado SET Data_Fim = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Voluntariado = 1 AND Data_Fim IS NULL;`
 
 * **Manutenção Cadastral de Pessoas:**
-* * *Pergunta de negócio:* Como atualizar os canais de contato (telefone e e-mail) de um doador ou voluntário cadastrado?
-* * *Comando:* `UPDATE Pessoa SET Telefone = '16999998888', Email = 'ana.souza_atualizado@email.com' WHERE ID_Pessoa = 1;`
+  * *Pergunta de negócio:* Como atualizar os canais de contato (telefone e e-mail) de um doador ou voluntário cadastrado?
+  * *Comando:* `UPDATE Pessoa SET Telefone = '16999998888', Email = 'ana.souza_atualizado@email.com' WHERE ID_Pessoa = 1;`
 
 --- 
 
-### 2. Operações de Exclusão (`DELETE`) 
+#### 2. Operações de Exclusão (`DELETE`) 
 * **Remoção de Adoção Cancelada:**
-* * *Pergunta de negócio:* Como remover do banco de dados um registro de processo de adoção cancelado antes de sua efetivação?
-* * *Comando:* `DELETE FROM Adocao WHERE ID_Adocao = 2 AND Status = 'CANCELADA';`
+  * *Pergunta de negócio:* Como remover do banco de dados um registro de processo de adoção cancelado antes de sua efetivação?
+  * *Comando:* `DELETE FROM Adocao WHERE ID_Adocao = 2 AND Status = 'CANCELADA';`
 
 * **Exclusão de Despesa Indevida:**
-* * *Pergunta de negócio:* Como apagar um lançamento financeiro de despesa cadastrado erroneamente?
-* * *Comando:* `DELETE FROM Despesa WHERE ID_Despesa = 2;`
+  * *Pergunta de negócio:* Como apagar um lançamento financeiro de despesa cadastrado erroneamente?
+  * *Comando:* `DELETE FROM Despesa WHERE ID_Despesa = 2;`
 
 * **Estorno de Aplicação de Vacina Errônea:**
-* * *Pergunta de negócio:* Como apagar o registro de uma dose de vacina lançada por engano no prontuário do animal?
-* * *Comando:* `DELETE FROM Vacinacao WHERE ID_Vacinacao = 2;`
+  * *Pergunta de negócio:* Como apagar o registro de uma dose de vacina lançada por engano no prontuário do animal?
+  * *Comando:* `DELETE FROM Vacinacao WHERE ID_Vacinacao = 2;`
 
 * **Limpeza de Prontuário Veterinário Duplicado:**
-* * *Pergunta de negócio:* Como remover um histórico médico registrado em duplicidade?
-* * *Comando:* `DELETE FROM Historico_Veterinario WHERE ID_Historico_Veterinario = 2;`
+  * *Pergunta de negócio:* Como remover um histórico médico registrado em duplicidade?
+  * *Comando:* `DELETE FROM Historico_Veterinario WHERE ID_Historico_Veterinario = 2;`
+
+---
+
