@@ -1,5 +1,3 @@
-
-
 -- 1. ATUALIZAÇÃO DE STATUS DO ANIMAL
 -- Pergunta de negócio: Como atualizar o status de um animal que concluiu o tratamento médico para que ele fique disponível para adoção?
 
