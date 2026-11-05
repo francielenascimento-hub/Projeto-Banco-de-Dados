@@ -202,8 +202,6 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 </div>
 
-### Diagrama Entidade-Relacionamento (DER)
-
 ![Modelo Conceitual](imagens/modelo-conceitual.png)
 
 ---
