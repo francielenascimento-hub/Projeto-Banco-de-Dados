@@ -77,8 +77,8 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 <div align="justify">
 
-├── [`Modelo Conceitual`](MODELO CONCEITUAL – ONG de Proteção Animal.pdf)
-├── [`Modelo Lógico`]()
+├── [`Modelo Conceitual`](Modelo_Conceitual-ONG_de_Protecao_Animal.pdf)<br>
+├── [`Modelo Lógico`]()<br>
 ├── [`01_ddl_estrutura.sql`](01_ddl_estrutura.sql)········# Criação das tabelas, chaves primárias/estrangeiras e restrições CHECK<br> 
 ├── [`02_dml_carga.sql`](02_dml_carga.sql)············# Script de carga inicial de dados de teste<br>
 ├── [`03_dml_operacoes.sql`](03_dml_operacoes.sql)········# Exemplos práticos de atualização (UPDATE) e exclusão (DELETE)<br>
