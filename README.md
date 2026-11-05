@@ -77,13 +77,13 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 <div align="justify">
 
-├── `01_ddl_estrutura.sql`········# Criação das tabelas, chaves primárias/estrangeiras e restrições CHECK<br> 
-├── `02_dml_carga.sql`············# Script de carga inicial de dados de teste<br>
-├── `03_dml_operacoes.sql`········# Exemplos práticos de atualização (UPDATE) e exclusão (DELETE)<br>
-├── `04_consultas.sql`············# Consultas SQL (JOIN, Agregação, GROUP BY, Subconsultas, UNION)<br>
-├── `05_plsql.sql`················# Implementação de Procedures, Functions e Triggers<br>
-├── `06_testes.sql`···············# Execução de testes de validação das regras de negócio<br>
-└── `docs`························# DER, Modelo Lógico, Dicionário de Dados e Documentação do Projeto<br>
+├── [`01_ddl_estrutura.sql`](docs/01_ddl_estrutura.sql)········# Criação das tabelas, chaves primárias/estrangeiras e restrições CHECK<br> 
+├── [`02_dml_carga.sql`](docs/02_dml_carga.sql)············# Script de carga inicial de dados de teste<br>
+├── [`03_dml_operacoes.sql`](docs/03_dml_operacoes.sql)········# Exemplos práticos de atualização (UPDATE) e exclusão (DELETE)<br>
+├── [`04_consultas.sql`](docs/)············# Consultas SQL (JOIN, Agregação, GROUP BY, Subconsultas, UNION)<br>
+├── [`05_plsql.sql`](docs/)················# Implementação de Procedures, Functions e Triggers<br>
+├── [`06_testes.sql`](docs/)···············# Execução de testes de validação das regras de negócio<br>
+└── [`docs`](docs/)························# DER, Modelo Lógico, Dicionário de Dados e Documentação do Projeto<br>
 
 </div>
 
