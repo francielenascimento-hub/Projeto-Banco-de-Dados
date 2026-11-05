@@ -202,7 +202,7 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 </div>
 
-![DER](imagens/modelo-conceitual.png)
+![DER](./imagens/modelo-conceitual.png)
 
 ---
 
