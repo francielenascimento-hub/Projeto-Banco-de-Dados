@@ -89,7 +89,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 </div>
 
----
+<hr size="6">
 
 ### 1. Modelo Conceitual
 
@@ -112,6 +112,8 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 🟪 *Estrutura Física e Operacional (Roxo):* Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
 🟦 *Gestão e Governança (Azul):* Composto por Mandato_Diretoria e Historico_Status. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
 🟩 *Registros Médicos e Financeiros (Verde):* Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
+
+---
 
 ### 2. Modelo Lógico Relacional
 
