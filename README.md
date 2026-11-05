@@ -11,16 +11,20 @@
 
 <p align="center">
   
-  **# Sistema de Gestão para ONG de Proteção Animal**
+  # Sistema de Gestão para ONG de Proteção Animal
   
 </p>
 
-<p align="center">Projeto Prático de Banco de Dados I</p>
+<p align="center">
+  
+  **Projeto Prático de Banco de Dados I**
+  
+</p>
 
-**Curso:** Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — FATEC Ribeirão Preto
-**Orientadora:** Profa. Me. Eliza Bomfim
-**SGBD:** Oracle Database
-**Integrantes:** 
+**Curso:** Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — FATEC Ribeirão Preto<br>
+**Orientadora:** Profa. Me. Eliza Bomfim<br>
+**SGBD:** Oracle Database<br>
+**Integrantes:**
 - [Ana Clara Almeida Barbosa](https://github.com/AnaBarbosa18)
 - [Franciele Patrícia Nascimento da Silva](https://github.com/francielenascimento-hub)
 - [Jordana dos Santos Pelis](https://github.com/m0biius2)
@@ -39,10 +43,10 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 <div align="justify">
 
-**Cadastros Base e Atores:** Gestão de Pessoas (Adotantes, Voluntários e Membros da Diretoria) e Animais resgatados.
-**Estrutura Operacional:** Controle de Unidades da ONG e capacidade máxima de alojamento.
-**Processos e Transações:** Gerenciamento dos fluxos de Adoção e escalas de Voluntariado.
-**Registros Médicos e Financeiros:** Acompanhamento do Histórico Veterinário, Carteira de Vacinação, recebimento de Doações e controle de Despesas da instituição.
+**Cadastros Base e Atores:** Gestão de Pessoas (Adotantes, Voluntários e Membros da Diretoria) e Animais resgatados.<br>
+**Estrutura Operacional:** Controle de Unidades da ONG e capacidade máxima de alojamento.<br>
+**Processos e Transações:** Gerenciamento dos fluxos de Adoção e escalas de Voluntariado.<br>
+**Registros Médicos e Financeiros:** Acompanhamento do Histórico Veterinário, Carteira de Vacinação, recebimento de Doações e controle de Despesas da instituição.<br>
 
 </div>
 
@@ -50,12 +54,12 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 <div align="justify">
 
-**SGBD:** Oracle Database 
-**Linguagem SQL (DDL e DML):** Criação de tabelas, chaves (PK/FK), restrições de integridade (`CHECK`, `NOT NULL`, `UNIQUE`) e manipulação de dados. 
-**Lógica Procedimental (PL/SQL):**
+**SGBD:** Oracle Database <br>
+**Linguagem SQL (DDL e DML):** Criação de tabelas, chaves (PK/FK), restrições de integridade (`CHECK`, `NOT NULL`, `UNIQUE`) e manipulação de dados.<br>
+**Lógica Procedimental (PL/SQL):** <br>
 - **Triggers:** Automação de status de adoção e controle de capacidade das unidades.
 - **Procedures:** Validação de regras de negócio complexas e cadastro seguro.
-- **Functions:** Cálculos dinâmicos de doações acumuladas e despesas veterinárias.
+- **Functions:** Cálculos dinâmicos de doações acumuladas e despesas veterinárias.<br>
 **Modelagem:** Diagrama Entidade-Relacionamento (DER) e Modelo Lógico Relacional normalizado (3FN).
 
 </div>
@@ -64,13 +68,13 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 <div align="justify">
 
-├── 01_ddl_estrutura.sql        # Criação das tabelas, chaves primárias/estrangeiras e restrições CHECK 
-├── 02_dml_carga.sql            # Script de carga inicial de dados de teste 
-├── 03_dml_operacoes.sql        # Exemplos práticos de atualização (UPDATE) e exclusão (DELETE) 
-├── 04_consultas.sql            # Consultas SQL (JOIN, Agregação, GROUP BY, Subconsultas, UNION) 
-├── 05_plsql.sql                # Implementação de Procedures, Functions e Triggers 
-├── 06_testes.sql               # Execução de testes de validação das regras de negócio 
-└── docs                        # DER, Modelo Lógico, Dicionário de Dados e Documentação do Projeto
+├── 01_ddl_estrutura.sql        # Criação das tabelas, chaves primárias/estrangeiras e restrições CHECK<br> 
+├── 02_dml_carga.sql            # Script de carga inicial de dados de teste<br>
+├── 03_dml_operacoes.sql        # Exemplos práticos de atualização (UPDATE) e exclusão (DELETE)<br>
+├── 04_consultas.sql            # Consultas SQL (JOIN, Agregação, GROUP BY, Subconsultas, UNION)<br>
+├── 05_plsql.sql                # Implementação de Procedures, Functions e Triggers<br>
+├── 06_testes.sql               # Execução de testes de validação das regras de negócio<br>
+└── docs                        # DER, Modelo Lógico, Dicionário de Dados e Documentação do Projeto<br>
 
 </div>
 
