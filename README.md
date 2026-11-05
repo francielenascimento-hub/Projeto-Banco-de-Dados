@@ -291,7 +291,7 @@ O processo de normalização do banco de dados relacional foi conduzido rigorosa
 
 ## Dicionário de Dados 
 
-O dicionário de dados detalha a estrutura relacional das **14 tabelas** implementadas no Oracle Database, indicando os tipos de dados, a função de cada coluna e as restrições declarativas aplicadas. 
+O dicionário de dados detalha a estrutura relacional das **14 tabelas** implementadas no Oracle Database, indicando os tipos de dados, a função de cada coluna e as restrições declarativas aplicadas. Ele pode ser consultado completamente em [`Dicionario_de_Dados.md`](Dicionario_de_Dados.md).
 
 ### 1. Tabela `ENDERECO` 
 
