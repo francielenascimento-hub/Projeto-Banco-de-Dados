@@ -4,8 +4,6 @@
   
 </div>
 
----
-
 <div align="center">
 
   ## Sistema de Gestão para ONG de Proteção Animal
