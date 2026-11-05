@@ -354,7 +354,7 @@ Para respeitar as dependências de chaves estrangeiras (`FOREIGN KEY`), o script
 
 --- 
 
-## Operações Práticas de Atualização e Exclusão (`03_dml_operacoes.sql`) 
+## Operações de Atualização e Exclusão 
 
 O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDATE` e `DELETE`) associados a situações reais do fluxo de trabalho da ONG de Proteção Animal. 
 
