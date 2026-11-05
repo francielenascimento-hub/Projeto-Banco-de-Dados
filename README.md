@@ -1,11 +1,11 @@
-# Projeto Banco de Dados
-Sistema de Gestão para ONG de Proteção Animal <br>
-| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).<br>
-Inclui modelagem DER/Lógica, scripts DDL/DML, Procedures, Functions e Triggers.
+<p align="center">**# Projeto Banco de Dados**</p>
+**Sistema de Gestão para ONG de Proteção Animal** <br>
+**| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).**<br>
+**Inclui modelagem DER/Lógica, scripts DDL/DML, Procedures, Functions e Triggers.**
 ---
 # Sistema de Gestão para ONG de Proteção Animal
 
-**Projeto Prático de Banco de Dados I**
+<p align="center">Projeto Prático de Banco de Dados I</p>
 
 \*\*Curso:\*\* Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — FATEC Ribeirão Preto &gt; \*\*Orientadora:\*\* Profa. Me. Eliza Bomfim &gt; \*\*SGBD:\*\* Oracle Database --- ## 
 
