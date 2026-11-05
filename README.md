@@ -202,11 +202,15 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 </div>
 
+### Diagrama Entidade-Relacionamento (DER)
+
+![Modelo Conceitual](imagens/model-conceitual.png)
+
 ---
 
-### 2. Modelo Lógico Relacional
+## Modelo Lógico Relacional
 
-#### Conceito: O que é o Modelo Lógico?
+### Conceito: O que é o Modelo Lógico?
 
 <div align="justify">
 
@@ -214,7 +218,7 @@ O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual pa
 
 </div>
 
-#### 2.1 Modelo Lógico do Projeto (ONG de Proteção Animal)
+### Modelo Lógico do Projeto (ONG de Proteção Animal)
 
 <div align="justify">
 
@@ -230,6 +234,8 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
 * **Tipagem dos Atributos no Oracle:** Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas5more_horiz. 
 
 </div>
+
+![Modelo Lógico](imagens/model-logico.png)
 
 --- 
 
