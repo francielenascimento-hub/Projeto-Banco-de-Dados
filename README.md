@@ -28,8 +28,6 @@
 
 </div>
 
-
-
 ---
 
 ## Contexto e Problems 
@@ -87,7 +85,7 @@ As consultas que respondem a essas perguntas estão em `04_consultas.sql`.
 
 ---
 
-### Módulos e Estrutura do Banco de Dados 
+## Módulos e Estrutura do Banco de Dados 
 
 A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
 
@@ -102,7 +100,7 @@ A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos ope
 
 ---
 
-### Tecnologias e Recursos Utilizados 
+## Tecnologias e Recursos Utilizados 
 
 <div align="justify">
 
@@ -140,11 +138,57 @@ A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos ope
 
 </div>
 
+---
+
+## Como Executar no Oracle
+
+O projeto foi desenvolvido e testado no **Oracle FreeSQL** (ambiente web usado na disciplina), sem necessidade de instalação.
+
+### Passo a passo
+
+1. Acesse o FreeSQL e entre com sua conta.
+2. Abra uma nova planilha (worksheet) em um ambiente limpo.
+3. Execute os scripts **como script** (não como instrução única), na ordem:
+
+| Ordem | Script | O que faz |
+|:-----:|:-------|:----------|
+| 1 | `01_ddl_estrutura.sql` | Cria tabelas, chaves, restrições e índices |
+| 2 | `02_dml_carga.sql` | Insere os dados de teste |
+| 3 | `03_dml_operacoes.sql` | Exemplos de `UPDATE` e `DELETE` |
+| 4 | `04_consultas.sql` | Consultas de negócio |
+| 5 | `05_plsql.sql` | Procedures, functions e triggers |
+| 6 | `06_testes.sql` | Demonstração das regras de negócio |
+
+### Verificação
+
+```sql
+-- Deve listar as 14 tabelas
+SELECT table_name FROM user_tables ORDER BY table_name;
+
+-- Objetos PL/SQL devem estar com STATUS = 'VALID'
+SELECT object_name, object_type, status
+FROM user_objects
+WHERE object_type IN ('PROCEDURE', 'FUNCTION', 'TRIGGER');
+```
+
+### Reiniciar do zero
+
+Para repetir a demonstração, remova as tabelas e objetos antes de rodar os scripts novamente (ver bloco de `DROP` no início do `01_ddl_estrutura.sql`).
+
+---
+
+## Documentação
+
+- [DER (Modelo Conceitual)](Modelo_Conceitual-ONG_de_Protecao_Animal.pdf)
+- [Modelo Lógico](Modelo_Logico-ONG_de_Protecao_Animal.pdf)
+- [Dicionário de Dados](Dicionario_de_Dados.md)
+- [Regras de Negócio](Regras_de_Negocio.md)
+
 <hr size="15">
 
-### 1. Modelo Conceitual
+## Modelo Conceitual
 
-#### 1.1 Modelo Conceitual do Projeto (MER)
+### Modelo Conceitual do Projeto (MER)
 
 O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operacional, médico e administrativo da instituição, estando organizado visualmente em 5 blocos funcionais/temáticos:<br>
 
