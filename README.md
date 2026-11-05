@@ -89,7 +89,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 </div>
 
-<hr size="6">
+<hr size="15">
 
 ### 1. Modelo Conceitual
 
@@ -107,11 +107,15 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operacional, médico e administrativo da instituição, estando organizado visualmente em 5 blocos funcionais/temáticos:<br>
 
+<div align="justify">
+
 🟨 *Atores Principais / Cadastros Base (Amarelo):* Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco4. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.<br>
 🟧 *Processos e Transações do Sistema (Laranja):* Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.<br>
 🟪 *Estrutura Física e Operacional (Roxo):* Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
 🟦 *Gestão e Governança (Azul):* Composto por Mandato_Diretoria e Historico_Status. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
 🟩 *Registros Médicos e Financeiros (Verde):* Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
+
+</div>
 
 ---
 
@@ -127,7 +131,9 @@ O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual pa
 
 #### 2.1 Modelo Lógico do Projeto (ONG de Proteção Animal)
 
-Na conversão do DER para a estrutura relacional do projeto, as entidades e associações foram mapeadas conforme as seguintes diretrizes técnicas119:
+<div align="justify">
+
+Na conversão do DER para a estrutura relacional do projeto, as entidades e associações foram mapeadas conforme as seguintes diretrizes técnicas:
 
 * **Mapeamento de Tabelas e Chaves:** Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY). As relações de cardinalidade ´1:N´ e ´N:N´ foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario).
 
@@ -138,8 +144,24 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
 
 * **Tipagem dos Atributos no Oracle:** Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas5more_horiz. 
 
+</div>
+
 ---
 
+### 1. Tabela `ENDERECO` Armazena a localização geográfica padronizada de pessoas e unidades da ONG. 
+
+| Coluna | Tipo de Dado (Oracle) | Nulo? | Chave / Restrição | Descrição / Regra de Negócio Associada |
+| :--- | :--- | :--- | :--- | :--- | 
+| `ID_Endereco` | `NUMBER(10)` | Não | **PK** (Identity) | Identificador único do endereço. | 
+| `Rua` | `VARCHAR2(100)` | Não | — | **RN01:** Nome do logradouro obrigatório. | 
+| `Numero` | `VARCHAR2(6)` | Não | — | **RN01:** Número do imóvel obrigatório. | 
+| `Bairro` | `VARCHAR2(70)` | Não | — | **RN01:** Bairro obrigatório. | 
+| `Cidade` | `VARCHAR2(100)` | Não | — | **RN01:** Nome do município obrigatório. | 
+| `Estado` | `CHAR(2)` | Não | `CHECK` | **RN04:** Sigla da UF válida dentro das 27 UFs brasileiras. | 
+| `CEP` | `CHAR(8)` | Não | `CHECK` | **RN04:** CEP numérico obrigatório com 8 dígitos (`REGEXP_LIKE`). | 
+| `Complemento` | `VARCHAR2(60)` | Sim | — | Informação adicional de localização. | 
+
+* **Restrição de Unicidade:** `UNIQUE (CEP, Rua, Numero, Complemento)` para evitar cadastros redundantes. 
 
 
 ---
