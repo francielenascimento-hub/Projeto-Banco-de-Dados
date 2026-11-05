@@ -1,8 +1,8 @@
-<p align="center">
+<div align="center">
   
   # Projeto Banco de Dados
   
-</p>
+</div>
 
 **| Sistema de Gestão para ONG de Proteção Animal** <br>
 **| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).** <br>
