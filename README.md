@@ -31,6 +31,8 @@
 - [Samuel Pires Rodrigues](https://github.com/SamuelRod99)
 - [Thiago Santana de Freitas](https://github.com/Thiaguin7)
 
+---
+
 ### Sobre o Projeto 
 
 <div align="justify">
@@ -38,6 +40,8 @@
 Este repositório contém a solução completa de banco de dados relacional desenvolvida para a gestão operacional, médica e financeira de uma **ONG de Proteção Animal**. O projeto abrange desde o levantamento das necessidades de informação e modelagem conceitual até a implementação física e programação procedimental em ambiente **Oracle**. O sistema foi projetado para responder a perguntas reais do negócio, garantindo a integridade dos dados, a rastreabilidade dos animais resgatados e a transparência no controle de recursos.
 
 </div>
+
+---
 
 ### Módulos e Estrutura do Banco de Dados A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
 
