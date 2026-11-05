@@ -102,11 +102,11 @@ DER (Diagrama Entidade-Relacionamento): É a representação visual e gráfica d
 Modelo Conceitual do Projeto (ONG de Proteção Animal)
 
 O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operacional, médico e administrativo da instituição, estando organizado visualmente em 5 blocos funcionais/temáticos:
-🟨 Atores Principais / Cadastros Base (Amarelo): Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco4. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.
-🟧 Processos e Transações do Sistema (Laranja): Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.
-🟪 Estrutura Física e Operacional (Roxo): Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.
-🟦 Gestão e Governança (Azul): Composto por Mandato_Diretoria e Historico_Status4. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).
-🟩 Registros Médicos e Financeiros (Verde): Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.
+🟨 Atores Principais / Cadastros Base (Amarelo): Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco4. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.<br>
+🟧 Processos e Transações do Sistema (Laranja): Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.<br>
+🟪 Estrutura Física e Operacional (Roxo): Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
+🟦 Gestão e Governança (Azul): Composto por Mandato_Diretoria e Historico_Status4. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
+🟩 Registros Médicos e Financeiros (Verde): Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
 
 2. Modelo Lógico Relacional💡
 
