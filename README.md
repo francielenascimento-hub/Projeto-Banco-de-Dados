@@ -66,6 +66,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 - **Triggers:** Automação de status de adoção e controle de capacidade das unidades.
 - **Procedures:** Validação de regras de negócio complexas e cadastro seguro.
 - **Functions:** Cálculos dinâmicos de doações acumuladas e despesas veterinárias.<br>
+
 **Modelagem:** Diagrama Entidade-Relacionamento (DER) e Modelo Lógico Relacional normalizado (3FN).
 
 </div>
