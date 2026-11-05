@@ -1,13 +1,13 @@
 <p align="center">
   
-  **# Projeto Banco de Dados** 
+  # Projeto Banco de Dados
   
 </p>
 
 **Sistema de Gestão para ONG de Proteção Animal** <br>
-**| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).**<br>
+**| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).** <br>
 **Inclui modelagem DER/Lógica, scripts DDL/DML, Procedures, Functions e Triggers.**
----
+
 
 <p align="center">
   
@@ -17,7 +17,7 @@
 
 <p align="center">
   
-  **Projeto Prático de Banco de Dados I**
+  ## Projeto Prático de Banco de Dados I
   
 </p>
 
@@ -31,7 +31,7 @@
 - [Samuel Pires Rodrigues](https://github.com/SamuelRod99)
 - [Thiago Santana de Freitas](https://github.com/Thiaguin7)
 
-## Sobre o Projeto 
+### Sobre o Projeto 
 
 <div align="justify">
   
@@ -39,7 +39,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 </div>
 
-## Módulos e Estrutura do Banco de Dados A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
+### Módulos e Estrutura do Banco de Dados A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
 
 <div align="justify">
 
@@ -50,7 +50,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 </div>
 
-## Tecnologias e Recursos Utilizados 
+### Tecnologias e Recursos Utilizados 
 
 <div align="justify">
 
@@ -64,7 +64,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 </div>
 
-## Estrutura do Repositório 
+### Estrutura do Repositório 
 
 <div align="justify">
 
