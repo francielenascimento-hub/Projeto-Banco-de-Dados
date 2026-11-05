@@ -8,11 +8,12 @@
 **| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).** <br>
 **| Inclui modelagem DER/Lógica, scripts DDL/DML, Procedures, Functions e Triggers.**
 
+---
 
 <p align="center">
-  
+
   # Sistema de Gestão para ONG de Proteção Animal
-  
+
 </p>
 
 <p align="center">
