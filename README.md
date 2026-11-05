@@ -49,7 +49,7 @@
 
 ---
 
-## Contexto e Problems 
+## Contexto e Problema 
 
 <div align="justify">
   
@@ -106,7 +106,7 @@ As consultas que respondem a essas perguntas estão em `04_consultas.sql`.
 
 ## Módulos e Estrutura do Banco de Dados 
 
-A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
+A modelagem engloba 14 entidades principais organizadas nos seguintes fluxos operacionais: 
 
 <div align="justify">
 
@@ -136,12 +136,16 @@ A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos ope
 
 ---
 
-### Estrutura do Repositório 
+## Estrutura do Repositório 
 
 <div align="justify">
 
 ```text
 .
+└── main
+  └──imagens
+    ├── modelo-conceitual.png                      # DER
+    └── modelo-logico.png                          # Modelo lógico/relacional
 ├── README.md
 ├── Modelo_Conceitual-ONG_de_Protecao_Animal.pdf   # DER
 ├── Modelo_Logico-ONG_de_Protecao_Animal.pdf       # Modelo lógico/relacional
@@ -203,7 +207,7 @@ Para repetir a demonstração, remova as tabelas e objetos antes de rodar os scr
 - [Dicionário de Dados](Dicionario_de_Dados.md)
 - [Regras de Negócio](Regras_de_Negocio.md)
 
-<hr size="15">
+---
 
 ## Modelo Conceitual
 
@@ -217,9 +221,11 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 🟧 *Processos e Transações do Sistema (Laranja):* Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.<br>
 🟪 *Estrutura Física e Operacional (Roxo):* Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
 🟦 *Gestão e Governança (Azul):* Composto por Mandato_Diretoria e Historico_Status. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
-🟩 *Registros Médicos e Financeiros (Verde):* Formado por Historico_Veterinario, Vacinacao e Despesa4. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
+🟩 *Registros Médicos e Financeiros (Verde):* Formado por Historico_Veterinario, Vacinacao e Despesa. Armazena os atendimentos clínicos, prontuários veterinários, vacinas aplicadas e as despesas operacionais das unidades.<br>
 
 </div>
+
+### Diagrama de Entidade e Relacionamento (DER)
 
 ![DER](./imagens/modelo-conceitual.png)
 
@@ -231,7 +237,7 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 <div align="justify">
 
-O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual para o modelo relacional de banco de dados. Ele converte entidades em tabelas, atributos em colunas com tipos de dados definidos (como VARCHAR2, NUMBER, DATE, CHAR) e estabelece a integridade referencial por meio de Chaves Primárias (PK) e Chaves Estrangeiras (FK). Nessa etapa, aplicam-se as Formas Normais (1FN, 2FN e 3FN) para eliminar redundâncias e evitar anomalias de inserção, alteração e exclusão18.
+O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual para o modelo relacional de banco de dados. Ele converte entidades em tabelas, atributos em colunas com tipos de dados definidos (como VARCHAR2, NUMBER, DATE, CHAR) e estabelece a integridade referencial por meio de Chaves Primárias (PK) e Chaves Estrangeiras (FK). Nessa etapa, aplicam-se as Formas Normais (1FN, 2FN e 3FN) para eliminar redundâncias e evitar anomalias de inserção, alteração e exclusão.
 
 </div>
 
@@ -248,7 +254,7 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
   * `Endereco:` Isolado em uma tabela dedicada, permitindo o compartilhamento e a padronização de localização entre Pessoa e Unidade_ONG.
   * `Historico_Status:` Tabela criada especificamente para auditoria e registro de histórico de transição de status dos animais.
 
-* **Tipagem dos Atributos no Oracle:** Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas5more_horiz. 
+* **Tipagem dos Atributos no Oracle:** Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas. 
 
 </div>
 
@@ -362,7 +368,7 @@ O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDA
 
 ### 1. Operações de Atualização (`UPDATE`)
 
-* **Atualização de Status Clínico do Animal (RN):**
+* **Atualização de Status Clínico do Animal:**
   * *Pergunta de negócio:* Como atualizar o status de um animal que concluiu o tratamento médico para que ele fique disponível para adoção?
   * *Comando:* `UPDATE Animal SET Status = 'DISPONIVEL' WHERE ID_Animal = 2 AND Status = 'EM_TRATAMENTO';` 
 
