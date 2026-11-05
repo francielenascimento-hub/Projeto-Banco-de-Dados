@@ -1,25 +1,15 @@
 <div align="center">
   
-  # Projeto Banco de Dados
+  # Projeto Prático de Banco de Dados I
   
 </div>
-
-**| Sistema de Gestão para ONG de Proteção Animal** <br>
-**| Projeto prático de Banco de Dados Relacional desenvolvido em Oracle SQL e PL/SQL para a disciplina de Banco de Dados I (ADS - FATEC Ribeirão Preto).** <br>
-**| Inclui modelagem DER/Lógica, scripts DDL/DML, Procedures, Functions e Triggers.**
 
 ---
 
 <div align="center">
 
-  # Sistema de Gestão para ONG de Proteção Animal
+  ## Sistema de Gestão para ONG de Proteção Animal
 
-</div>
-
-<div align="center">
-  
-  ## Projeto Prático de Banco de Dados I
-  
 </div>
 
 **Curso:** Tecnologia em Análise e Desenvolvimento de Sistemas (ADS) — FATEC Ribeirão Preto<br>
@@ -44,7 +34,9 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 ---
 
-### Módulos e Estrutura do Banco de Dados A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
+### Módulos e Estrutura do Banco de Dados 
+
+A modelagem engloba 10 entidades principais organizadas nos seguintes fluxos operacionais: 
 
 <div align="justify">
 
@@ -85,8 +77,7 @@ Este repositório contém a solução completa de banco de dados relacional dese
 ├── [`03_dml_operacoes.sql`](03_dml_operacoes.sql)········# Exemplos práticos de atualização (UPDATE) e exclusão (DELETE)<br>
 ├── [`04_consultas.sql`]()············# Consultas SQL (JOIN, Agregação, GROUP BY, Subconsultas, UNION)<br>
 ├── [`05_plsql.sql`]()················# Implementação de Procedures, Functions e Triggers<br>
-├── [`06_testes.sql`]()···············# Execução de testes de validação das regras de negócio<br>
-└── [`docs`]()························# DER, Modelo Lógico, Dicionário de Dados e Documentação do Projeto<br>
+└── [`06_testes.sql`]()···············# Execução de testes de validação das regras de negócio<br>
 
 </div>
 
@@ -94,23 +85,13 @@ Este repositório contém a solução completa de banco de dados relacional dese
 
 ### 1. Modelo Conceitual
 
-#### Conceito: O que são MER e DER?
-
-<div align="justify">
-
-**MER (Modelo Entidade-Relacionamento):** É a especificação conceitual e abstrata do domínio de negócio1. Ele identifica quais entidades do mundo real precisam ser registradas no sistema, quais atributos descrevem essas entidades e como elas se relacionam sintaticamente, sem se preocupar com restrições técnicas ou implementação física em um SGBD específico.
-
-**DER (Diagrama Entidade-Relacionamento):** É a representação visual e gráfica do MER13. Utiliza notação conceitual (como a notação de Peter Chen), onde as entidades são desenhadas em retângulos, os atributos em elipses/bolinhas, os relacionamentos em losangos e as linhas de associação indicam as cardinalidades mínimas e máximas do sistema1.
-
-</div>
-
-#### 1.1 Modelo Conceitual do Projeto (ONG de Proteção Animal)
+#### 1.1 Modelo Conceitual do Projeto (MER)
 
 O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operacional, médico e administrativo da instituição, estando organizado visualmente em 5 blocos funcionais/temáticos:<br>
 
 <div align="justify">
 
-🟨 *Atores Principais / Cadastros Base (Amarelo):* Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco4. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.<br>
+🟨 *Atores Principais / Cadastros Base (Amarelo):* Formado pelas entidades Pessoa, Animal, Especie, Raca e Endereco. Modela os indivíduos cadastrados no sistema (adotantes, voluntários e diretores), os animais resgatados e a taxonomia básica.<br>
 🟧 *Processos e Transações do Sistema (Laranja):* Engloba os relacionamentos transacionais Adocao, Voluntariado e Doacao. Gerencia o ciclo de adoções, as escalas de trabalho dos voluntários e as contribuições financeiras recebidas.<br>
 🟪 *Estrutura Física e Operacional (Roxo):* Representado pela entidade Unidade_ONG, encarregada de registrar os abrigos e sedes físicas da ONG, controlando a capacidade de alojamento de animais e limites operacionais.<br>
 🟦 *Gestão e Governança (Azul):* Composto por Mandato_Diretoria e Historico_Status. Controla os cargos administrativos da ONG e rastreia o histórico temporal das mudanças de estado do animal (ex: transição de EM_TRATAMENTO para DISPONIVEL ou ADOTADO).<br>
@@ -126,7 +107,7 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 <div align="justify">
 
-O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual para o modelo relacional de banco de dados. Ele converte entidades em tabelas, atributos em colunas com tipos de dados definidos (como VARCHAR2, NUMBER, DATE, CHAR) e estabelece a integridade referencial por meio de Chaves Primárias (PK) e Chaves Estrangeiras (FK)1more_horiz. Nessa etapa, aplicam-se as Formas Normais (1FN, 2FN e 3FN) para eliminar redundâncias e evitar anomalias de inserção, alteração e exclusão18.
+O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual para o modelo relacional de banco de dados. Ele converte entidades em tabelas, atributos em colunas com tipos de dados definidos (como VARCHAR2, NUMBER, DATE, CHAR) e estabelece a integridade referencial por meio de Chaves Primárias (PK) e Chaves Estrangeiras (FK). Nessa etapa, aplicam-se as Formas Normais (1FN, 2FN e 3FN) para eliminar redundâncias e evitar anomalias de inserção, alteração e exclusão18.
 
 </div>
 
@@ -136,12 +117,12 @@ O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual pa
 
 Na conversão do DER para a estrutura relacional do projeto, as entidades e associações foram mapeadas conforme as seguintes diretrizes técnicas:
 
-* **Mapeamento de Tabelas e Chaves:** Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY). As relações de cardinalidade ´1:N´ e ´N:N´ foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario).
+* **Mapeamento de Tabelas e Chaves:** Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY). As relações de cardinalidade `1:N` e `N:N` foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario).
 
 * **Normalização Aplicada:**
-  * ´Especie e Raca:´ Foram separadas em tabelas próprias para eliminar a repetição de nomes de espécies/raças na tabela Animal (atendendo à 2FN e 3FN).
-  * ´Endereco:´ Isolado em uma tabela dedicada, permitindo o compartilhamento e a padronização de localização entre Pessoa e Unidade_ONG.
-  * ´Historico_Status:´ Tabela criada especificamente para auditoria e registro de histórico de transição de status dos animais.
+  * `Especie e Raca:` Foram separadas em tabelas próprias para eliminar a repetição de nomes de espécies/raças na tabela Animal (atendendo à 2FN e 3FN).
+  * `Endereco:` Isolado em uma tabela dedicada, permitindo o compartilhamento e a padronização de localização entre Pessoa e Unidade_ONG.
+  * `Historico_Status:` Tabela criada especificamente para auditoria e registro de histórico de transição de status dos animais.
 
 * **Tipagem dos Atributos no Oracle:** Os tipos de dados foram especificados utilizando a sintaxe do Oracle Database: VARCHAR2 para textos descritivos, DATE para datas de eventos/resgates, CHAR para códigos de tamanho fixo (CPF, Sexo, Estado) e NUMBER(10,2) para valores monetários de doações e despesas5more_horiz. 
 
@@ -153,7 +134,7 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
 
 <div align="justify">
 
-O processo de normalização do banco de dados relacional foi conduzido rigorosamente para garantir a integridade dos dados, eliminar redundâncias desnecessárias e evitar anomalias de inserção, alteração e exclusão . As regras aplicadas contemplam as três primeiras formas normais (1FN, 2FN e 3FN), além de justificativas técnicas para redundâncias deliberadamente mantidas. 
+O processo de normalização do banco de dados relacional foi conduzido rigorosamente para garantir a integridade dos dados, eliminar redundâncias desnecessárias e evitar anomalias de inserção, alteração e exclusão. As regras aplicadas contemplam as três primeiras formas normais (1FN, 2FN e 3FN), além de justificativas técnicas para redundâncias deliberadamente mantidas. 
 
 </div>
 
@@ -185,9 +166,9 @@ O processo de normalização do banco de dados relacional foi conduzido rigorosa
 
 * **Eliminação de Atributos Transitivos:** Atributos não-chave dependem exclusivamente da Chave Primária da própria tabela. 
 
-* **Normalização de Membros da Diretoria:** A tabela `MANDATO_DIRETORIA` armazena apenas a referência `ID_Pessoa` . O nome e os dados pessoais do diretor permanecem exclusivamente na tabela `PESSOA`, evitando a duplicação do nome em `MANDATO_DIRETORIA`. 
+* **Normalização de Membros da Diretoria:** A tabela `MANDATO_DIRETORIA` armazena apenas a referência `ID_Pessoa`. O nome e os dados pessoais do diretor permanecem exclusivamente na tabela `PESSOA`, evitando a duplicação do nome em `MANDATO_DIRETORIA`. 
 
-* **Compartilhamento de Endereço:** As tabelas `PESSOA` e `UNIDADE_ONG` não replicam colunas de localização; elas apenas contêm a chave estrangeira `ID_Endereco`, apontando para a tabela `ENDERECO` . 
+* **Compartilhamento de Endereço:** As tabelas `PESSOA` e `UNIDADE_ONG` não replicam colunas de localização; elas apenas contêm a chave estrangeira `ID_Endereco`, apontando para a tabela `ENDERECO`. 
 
 </div>
 
@@ -195,7 +176,7 @@ O processo de normalização do banco de dados relacional foi conduzido rigorosa
 
 <div align="justify">
 
-* **Tabela `HISTORICO_STATUS`:** O status atual do animal fica registrado na coluna `Status` da tabela `ANIMAL`. No entanto, foi criada a tabela `HISTORICO_STATUS` para registrar `Status_Anterior`, `Status_Novo` e `Data_Alteracao` . Essa duplicação temporal é **deliberada e necessária para auditoria**, rastreabilidade do histórico de vida do animal resgatado e acionamento de gatilhos procedimentais (`TRIGGERS`) . 
+* **Tabela `HISTORICO_STATUS`:** O status atual do animal fica registrado na coluna `Status` da tabela `ANIMAL`. No entanto, foi criada a tabela `HISTORICO_STATUS` para registrar `Status_Anterior`, `Status_Novo` e `Data_Alteracao`. Essa duplicação temporal é **deliberada e necessária para auditoria**, rastreabilidade do histórico de vida do animal resgatado e acionamento de gatilhos procedimentais (`TRIGGERS`). 
 
 </div>
 
@@ -230,7 +211,8 @@ Cadastra as espécies de animais atendidas pela instituição.
 
 | Coluna | Tipo de Dado (Oracle) | Nulo? | Chave / Restrição | Descrição / Regra de Negócio Associada |
 | :--- | :--- | :--- | :--- | :--- | 
-| `ID_Especie` | `NUMBER(10)` | Não | **PK** (Identity) | Identificador único da espécie. | | `Nome` | `VARCHAR2(50)` | Não | `UNIQUE` | **RN04:** Nome da espécie único e obrigatório (ex: 'CACHORRO', 'GATO'). | 
+| `ID_Especie` | `NUMBER(10)` | Não | **PK** (Identity) | Identificador único da espécie. | 
+| `Nome` | `VARCHAR2(50)` | Não | `UNIQUE` | **RN04:** Nome da espécie único e obrigatório (ex: 'CACHORRO', 'GATO'). | 
 
 --- 
 
@@ -270,7 +252,8 @@ Cadastra todos os indivíduos vinculados (adotantes, voluntários e diretores).
 | :--- | :--- | :--- | :--- | :--- | 
 | `ID_Pessoa` | `NUMBER(10)` | Não | **PK** (Identity) | Identificador único da pessoa. | 
 | `ID_Endereco` | `NUMBER(10)` | Não | **FK** (`ENDERECO`) | **RN01 / RN16:** Endereço residencial obrigatório (sem `CASCADE`). | 
-| `Estado_Civil` | `VARCHAR2(15)` | Sim | `CHECK` | **RN04:** Valores restritos a 'SOLTEIRO', 'CASADO', 'UNIAO_ESTAVEL', 'VIUVO', 'DIVORCIADO'. | | `CPF` | `CHAR(11)` | Não | `UNIQUE`, `CHECK` | **RN01 / RN02:** CPF obrigatório, único e composto por 11 dígitos numéricos. | 
+| `Estado_Civil` | `VARCHAR2(15)` | Sim | `CHECK` | **RN04:** Valores restritos a 'SOLTEIRO', 'CASADO', 'UNIAO_ESTAVEL', 'VIUVO', 'DIVORCIADO'. | 
+| `CPF` | `CHAR(11)` | Não | `UNIQUE`, `CHECK` | **RN01 / RN02:** CPF obrigatório, único e composto por 11 dígitos numéricos. | 
 | `Nome` | `VARCHAR2(200)` | Não | — | **RN01:** Nome completo obrigatório. | 
 | `Data_Nascimento` | `DATE` | Não | — | **RN01 / RN03:** Data de nascimento para validação da maioridade (18+ anos). | 
 | `Telefone` | `VARCHAR2(18)` | Não | — | **RN01:** Telefone principal de contato obrigatório. | 
@@ -404,7 +387,8 @@ Armazena o prontuário clínico e histórico de consultas médicas.
 | `Queixa` | `VARCHAR2(300)` | Não | — | Descrição dos sintomas e queixas reportadas. | 
 | `Estado_Tratamento` | `VARCHAR2(20)` | Não | `CHECK` | **RN04:** Restrito a 'AGUARDANDO', 'SEM_TRATAMENTO', 'EM_ANDAMENTO', 'CONCLUIDO', 'INTERROMPIDO'. | 
 | `Diagnostico` | `VARCHAR2(60)` | Sim | — | Diagnóstico clínico veterinário. | 
-| `Data_Atendimento` | `DATE` | Não | — | **RN07:** Data do atendimento não futura e não anterior ao resgate. | | `Tratamento` | `VARCHAR2(300)` | Sim | — | Prescrição médica e intervenções efetuadas. | 
+| `Data_Atendimento` | `DATE` | Não | — | **RN07:** Data do atendimento não futura e não anterior ao resgate. | 
+| `Tratamento` | `VARCHAR2(300)` | Sim | — | Prescrição médica e intervenções efetuadas. | 
 
 --- 
 
@@ -421,8 +405,6 @@ Registra a auditoria de transição de status do animal.
 | `Data_Alteracao` | `DATE` | Não | `DEFAULT` (`SYSDATE`) | **RN15:** Carimbo de data/hora automático da alteração (`SYSDATE`). | 
 
 * **Restrição de Consistência (RN15):** `CHECK (Status_Anterior <> Status_Novo)` para impedir a gravação de logs redundantes.
- 
-
 
 ---
 
