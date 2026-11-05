@@ -204,7 +204,7 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 ### Diagrama Entidade-Relacionamento (DER)
 
-![Modelo Conceitual](imagens/model-conceitual.png)
+![Modelo Conceitual](imagens/modelo-conceitual.png)
 
 ---
 
@@ -235,7 +235,7 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
 
 </div>
 
-![Modelo Lógico](imagens/model-logico.png)
+![Modelo Lógico](imagens/modelo-logico.png)
 
 --- 
 
