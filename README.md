@@ -133,4 +133,41 @@ Para respeitar as dependências de chaves estrangeiras (`FOREIGN KEY`), o script
 
 ## 🔄 Operações Práticas de Atualização e Exclusão (`03_dml_operacoes.sql`) 
 
-O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDATE` e `DELETE`) associados a situações reais do fluxo de trabalho da ONG de Proteção Animal [2, 5, 18, 19]. ### 1. Operações de Atualização (`UPDATE`) * **Atualização de Status Clínico do Animal (RN):** * *Pergunta de negócio:* Como atualizar o status de um animal que concluiu o tratamento médico para que ele fique disponível para adoção [18]? * *Comando:* `UPDATE Animal SET Status = 'DISPONIVEL' WHERE ID_Animal = 2 AND Status = 'EM_TRATAMENTO';` [18] * **Finalização Formal de Adoção:** * *Pergunta de negócio:* Como aprovar e concluir formalmente um processo de adoção em análise, registrando a data de conclusão [18]? * *Comando:* `UPDATE Adocao SET Status = 'CONCLUIDA', Data_Conclusao = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Adocao = 2 AND Status = 'EM_ANALISE';` [18, 20] * **Encerramento de Vínculo de Voluntariado:** * *Pergunta de negócio:* Como registrar a data de encerramento do trabalho de um voluntário que se desligou da instituição [20]? * *Comando:* `UPDATE Voluntariado SET Data_Fim = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Voluntariado = 1 AND Data_Fim IS NULL;` [20] * **Manutenção Cadastral de Pessoas:** * *Pergunta de negócio:* Como atualizar os canais de contato (telefone e e-mail) de um doador ou voluntário cadastrado [20]? * *Comando:* `UPDATE Pessoa SET Telefone = '16999998888', Email = 'ana.souza_atualizado@email.com' WHERE ID_Pessoa = 1;` [19, 20] --- ### 2. Operações de Exclusão (`DELETE`) * **Remoção de Adoção Cancelada:** * *Pergunta de negócio:* Como remover do banco de dados um registro de processo de adoção cancelado antes de sua efetivação [19]? * *Comando:* `DELETE FROM Adocao WHERE ID_Adocao = 2 AND Status = 'CANCELADA';` [19] * **Exclusão de Despesa Indevida:** * *Pergunta de negócio:* Como apagar um lançamento financeiro de despesa cadastrado erroneamente [19, 21]? * *Comando:* `DELETE FROM Despesa WHERE ID_Despesa = 2;` [21] * **Estorno de Aplicação de Vacina Errônea:** * *Pergunta de negócio:* Como apagar o registro de uma dose de vacina lançada por engano no prontuário do animal [21]? * *Comando:* `DELETE FROM Vacinacao WHERE ID_Vacinacao = 2;` [21] * **Limpeza de Prontuário Veterinário Duplicado:** * *Pergunta de negócio:* Como remover um histórico médico registrado em duplicidade [21, 22]? * *Comando:* `DELETE FROM Historico_Veterinario WHERE ID_Historico_Veterinario = 2;` [21, 22]
+O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDATE` e `DELETE`) associados a situações reais do fluxo de trabalho da ONG de Proteção Animal. 
+
+### 1. Operações de Atualização (`UPDATE`)
+
+* **Atualização de Status Clínico do Animal (RN):**
+* * *Pergunta de negócio:* Como atualizar o status de um animal que concluiu o tratamento médico para que ele fique disponível para adoção?
+* * *Comando:* `UPDATE Animal SET Status = 'DISPONIVEL' WHERE ID_Animal = 2 AND Status = 'EM_TRATAMENTO';` 
+
+* **Finalização Formal de Adoção:**
+* * *Pergunta de negócio:* Como aprovar e concluir formalmente um processo de adoção em análise, registrando a data de conclusão?
+* * *Comando:* `UPDATE Adocao SET Status = 'CONCLUIDA', Data_Conclusao = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Adocao = 2 AND Status = 'EM_ANALISE';`
+
+* **Encerramento de Vínculo de Voluntariado:**
+* * *Pergunta de negócio:* Como registrar a data de encerramento do trabalho de um voluntário que se desligou da instituição?
+* * *Comando:* `UPDATE Voluntariado SET Data_Fim = TO_DATE('2026-11-01', 'YYYY-MM-DD') WHERE ID_Voluntariado = 1 AND Data_Fim IS NULL;`
+
+* **Manutenção Cadastral de Pessoas:**
+* * *Pergunta de negócio:* Como atualizar os canais de contato (telefone e e-mail) de um doador ou voluntário cadastrado?
+* * *Comando:* `UPDATE Pessoa SET Telefone = '16999998888', Email = 'ana.souza_atualizado@email.com' WHERE ID_Pessoa = 1;`
+
+--- 
+
+### 2. Operações de Exclusão (`DELETE`) 
+* **Remoção de Adoção Cancelada:**
+* * *Pergunta de negócio:* Como remover do banco de dados um registro de processo de adoção cancelado antes de sua efetivação?
+* * *Comando:* `DELETE FROM Adocao WHERE ID_Adocao = 2 AND Status = 'CANCELADA';`
+
+* **Exclusão de Despesa Indevida:**
+* * *Pergunta de negócio:* Como apagar um lançamento financeiro de despesa cadastrado erroneamente?
+* * *Comando:* `DELETE FROM Despesa WHERE ID_Despesa = 2;`
+
+* **Estorno de Aplicação de Vacina Errônea:**
+* * *Pergunta de negócio:* Como apagar o registro de uma dose de vacina lançada por engano no prontuário do animal?
+* * *Comando:* `DELETE FROM Vacinacao WHERE ID_Vacinacao = 2;`
+
+* **Limpeza de Prontuário Veterinário Duplicado:**
+* * *Pergunta de negócio:* Como remover um histórico médico registrado em duplicidade?
+* * *Comando:* `DELETE FROM Historico_Veterinario WHERE ID_Historico_Veterinario = 2;`
