@@ -341,7 +341,7 @@ documento indica o que ela garante, **como** foi implementada
 
 ---
 
-## Carga Inicial de Dados de Teste (`02_dml_carga.sql`) 
+## Carga Inicial de Dados 
 
 A povoação inicial do banco de dados foi projetada para garantir volume e relevância técnica suficientes para a execução de relatórios, consultas complexas com `JOIN` e testes de restrições de integridade. 
 
