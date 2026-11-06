@@ -3,7 +3,6 @@
 -- Ordem dos scripts: 01 -> 02 -> 05 -> 03 -> 04 -> 06
 -- Rode um bloco de cada vez, na ordem. Os comandos marcados com
 -- "Esperado: ORA-..." DEVEM falhar: o erro mostra a regra funcionando.
--- Se o FreeSQL não reconhecer o SET SERVEROUTPUT ON, apague essa linha.
 -- ============================================================================
 
 SET SERVEROUTPUT ON;
