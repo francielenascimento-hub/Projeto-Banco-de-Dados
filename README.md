@@ -126,9 +126,9 @@ A modelagem engloba 14 entidades principais organizadas nos seguintes fluxos ope
 **SGBD:** Oracle Database <br>
 **Linguagem SQL (DDL e DML):** Criação de tabelas, chaves (PK/FK), restrições de integridade (`CHECK`, `NOT NULL`, `UNIQUE`) e manipulação de dados.<br>
 **Lógica Procedimental (PL/SQL):** <br>
-- **Triggers:** Automação de status de adoção e controle de capacidade das unidades.
-- **Procedures:** Validação de regras de negócio complexas e cadastro seguro.
-- **Functions:** Cálculos dinâmicos de doações acumuladas e despesas veterinárias.<br>
+- **Triggers:** Validação de maioridade (adoção, doação e mandato), restrição de adoção a animais disponíveis e registro automático do histórico de status do animal.
+- **Procedures:** Registro de resgate com controle de capacidade da unidade, conclusão de adoção, exclusão protegida de animal e relatório de ocupação (com cursor).
+- **Functions:** Verificação de maioridade na data do evento e cálculo de vagas disponíveis por unidade.<br>
 
 **Modelagem:** Diagrama Entidade-Relacionamento (DER) e Modelo Lógico Relacional normalizado (3FN).
 
@@ -142,21 +142,20 @@ A modelagem engloba 14 entidades principais organizadas nos seguintes fluxos ope
 
 ```text
 .
-└── main
-  └──imagens
-    ├── modelo-conceitual.png                        # DER
-    └── modelo-logico.png                            # Modelo lógico/relacional
-  ├── README.md
-  ├── Modelo_Conceitual-ONG_de_Protecao_Animal.pdf   # DER
-  ├── Modelo_Logico-ONG_de_Protecao_Animal.pdf       # Modelo lógico/relacional
-  ├── Dicionario_de_Dados.md                         # Dicionário de dados
-  ├── Regras_de_Negocio.md                           # Regras de negócio (RN01 a RN16)
-  ├── 01_ddl_estrutura.sql                           # Tabelas, chaves e restrições
-  ├── 02_dml_carga.sql                               # Carga de dados de teste
-  ├── 03_dml_operacoes.sql                           # UPDATE e DELETE
-  ├── 04_consultas.sql                               # Consultas e perguntas de negócio
-  ├── 05_plsql.sql                                   # Procedures, functions e triggers
-  └── 06_testes.sql                                  # Testes das regras de negócio
+├── imagens/
+│   ├── modelo-conceitual.png                      # DER
+│   └── modelo-logico.png                          # Modelo lógico/relacional
+├── README.md
+├── Modelo_Conceitual-ONG_de_Protecao_Animal.pdf   # DER
+├── Modelo_Logico-ONG_de_Protecao_Animal.pdf       # Modelo lógico/relacional
+├── Dicionario_de_Dados.md                         # Dicionário de dados
+├── Regras_de_Negocio.md                           # Regras de negócio (RN01 a RN16)
+├── 01_ddl_estrutura.sql                           # Tabelas, chaves e restrições
+├── 02_dml_carga.sql                               # Carga de dados de teste
+├── 03_dml_operacoes.sql                           # UPDATE e DELETE
+├── 04_consultas.sql                               # Consultas e perguntas de negócio
+├── 05_plsql.sql                                   # Procedures, functions e triggers
+└── 06_testes.sql                                  # Testes das regras de negócio
 ```
 
 </div>
@@ -181,6 +180,8 @@ O projeto foi desenvolvido e testado no **Oracle FreeSQL** (ambiente web usado n
 | 4 | `04_consultas.sql` | Consultas de negócio |
 | 5 | `05_plsql.sql` | Procedures, functions e triggers |
 | 6 | `06_testes.sql` | Demonstração das regras de negócio |
+
+Para ver as mensagens de `DBMS_OUTPUT` (relatório de ocupação e testes), execute `SET SERVEROUTPUT ON` antes, se o ambiente exigir.
 
 ### Verificação
 
@@ -229,6 +230,25 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 ![DER](./imagens/modelo-conceitual.png)
 
+### Cardinalidades
+
+<!-- CONFERIR esta tabela com o DER antes de entregar -->
+
+| Entidade A | Cardinalidade | Entidade B | Observação |
+|:-----------|:-------------:|:-----------|:-----------|
+| `ESPECIE` | 1:N | `RACA` | Uma espécie possui várias raças |
+| `RACA` | 1:N | `ANIMAL` | Um animal tem uma raça |
+| `UNIDADE_ONG` | 1:N | `ANIMAL` | Um animal fica alojado em uma unidade |
+| `ENDERECO` | 1:N | `PESSOA` | Endereço compartilhável |
+| `ENDERECO` | 1:N | `UNIDADE_ONG` | Endereço compartilhável |
+| `PESSOA` | N:N | `ANIMAL` | Resolvida por `ADOCAO` |
+| `PESSOA` | N:N | `UNIDADE_ONG` | Resolvida por `VOLUNTARIADO` e por `MANDATO_DIRETORIA` |
+| `PESSOA` | 1:N | `DOACAO` | Uma pessoa pode fazer várias doações |
+| `UNIDADE_ONG` | 1:N | `DESPESA` | Despesas por unidade |
+| `ANIMAL` | 1:N | `VACINACAO` | Carteira de vacinação |
+| `ANIMAL` | 1:N | `HISTORICO_VETERINARIO` | Prontuário |
+| `ANIMAL` | 1:N | `HISTORICO_STATUS` | Auditoria de status |
+
 ---
 
 ## Modelo Lógico Relacional
@@ -247,7 +267,7 @@ O Modelo Lógico (ou Relacional) representa a tradução do modelo conceitual pa
 
 Na conversão do DER para a estrutura relacional do projeto, as entidades e associações foram mapeadas conforme as seguintes diretrizes técnicas:
 
-* **Mapeamento de Tabelas e Chaves:** Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY). As relações de cardinalidade `1:N` e `N:N` foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario).
+* **Mapeamento de Tabelas e Chaves:** Cada entidade do DER gerou uma tabela relacional dotada de chave primária (PK) auto-incremental (NUMBER / IDENTITY). As relações `1:N` foram estruturadas pela inclusão de chaves estrangeiras (FK) nas tabelas dependentes (como ID_Animal em Vacinacao e Historico_Veterinario). As relações `N:N` foram resolvidas por tabelas associativas (como Adocao, Voluntariado e Mandato_Diretoria), que ligam Pessoa a Animal ou a Unidade_ONG.
 
 * **Normalização Aplicada:**
   * `Especie e Raca:` Foram separadas em tabelas próprias para eliminar a repetição de nomes de espécies/raças na tabela Animal (atendendo à 2FN e 3FN).
@@ -310,6 +330,8 @@ O processo de normalização do banco de dados relacional foi conduzido rigorosa
 
 * **Tabela `HISTORICO_STATUS`:** O status atual do animal fica registrado na coluna `Status` da tabela `ANIMAL`. No entanto, foi criada a tabela `HISTORICO_STATUS` para registrar `Status_Anterior`, `Status_Novo` e `Data_Alteracao`. Essa duplicação temporal é **deliberada e necessária para auditoria**, rastreabilidade do histórico de vida do animal resgatado e acionamento de gatilhos procedimentais (`TRIGGERS`). 
 
+* **Tabela `ENDERECO` e o CEP:** `ENDERECO` guarda `CEP`, `Rua`, `Bairro`, `Cidade` e `Estado` na mesma tabela. O CEP não determina esses dados de forma única (em cidades pequenas, um CEP cobre a cidade toda, e um mesmo CEP pode abranger mais de uma rua), por isso não há dependência transitiva a ser separada. Decompor em tabelas de cidade e logradouro aumentaria a complexidade sem ganho para o domínio. 
+
 </div>
 
 --- 
@@ -343,7 +365,7 @@ documento indica o que ela garante, **como** foi implementada
 |:----------|:-------|
 | Restrição declarativa (`NOT NULL`, `UNIQUE`, `CHECK`, `FK`) | RN01, RN02, RN04, RN05, RN06, RN14, RN16 |
 | Índice único condicional | RN08, RN13 |
-| PL/SQL (trigger/procedure) | RN03, RN07, RN09, RN10, RN11, RN12, RN15 |
+| PL/SQL (trigger/procedure) | RN03, RN07, RN09, RN10, RN11, RN12, RN15, RN16 (tratamento do erro na exclusão) |
 
 ---
 
@@ -407,12 +429,53 @@ O script `03_dml_operacoes.sql` reúne exemplos de manipulação de dados (`UPDA
 
 ## Consultas SQL
 
+Em desenvolvimento.
 
 ---
 
 ## Objetos PL/SQL
 
+O script `05_plsql.sql` cria **2 functions, 5 triggers e 4 procedures**. Deve ser executado depois do DDL e da carga. Dentro do arquivo, a ordem é: functions, triggers e procedures.
+
+| Objeto | Tipo | Regra | O que faz |
+|:-------|:-----|:-----:|:----------|
+| `fn_maior_idade` | Function | RN03 | Retorna 1 se a pessoa tinha 18 anos ou mais na data informada, e 0 caso contrário |
+| `fn_vagas_disponiveis` | Function | RN11 | Capacidade da unidade menos os animais que ocupam vaga (`EM_TRATAMENTO`, `DISPONIVEL`, `EM_PROCESSO`); nunca retorna negativo |
+| `trg_adocao_maior_idade` | Trigger | RN03 | Bloqueia adotante menor de 18 anos (`ORA-20011`) |
+| `trg_doacao_maior_idade` | Trigger | RN03 | Bloqueia doador menor de 18 anos (`ORA-20012`) |
+| `trg_mandato_maior_idade` | Trigger | RN03 | Bloqueia diretor menor de 18 anos (`ORA-20013`) |
+| `trg_adocao_animal_disponivel` | Trigger | RN09 | Só permite adoção de animal com status `DISPONIVEL` (`ORA-20040`) |
+| `trg_animal_historico_status` | Trigger | RN15 | Registra em `HISTORICO_STATUS` o cadastro do animal e cada mudança de status |
+| `prc_registrar_resgate` | Procedure | RN11 | Trava a unidade, confere as vagas e cadastra o animal com status `EM_TRATAMENTO`; devolve o ID criado. Erros: `ORA-20020` (unidade lotada) e `ORA-20001` (unidade inexistente) |
+| `prc_concluir_adocao` | Procedure | RN10 | Conclui somente adoção `APROVADA`, registra a data de conclusão e muda o animal para `ADOTADO`. Erros: `ORA-20031` (status inválido) e `ORA-20030` (adoção inexistente) |
+| `prc_excluir_animal` | Procedure | RN16 | Exclui o animal; se houver registros vinculados, trata o `ORA-02292` e devolve `ORA-20051`. Erro `ORA-20050` se o animal não existir |
+| `prc_relatorio_ocupacao` | Procedure | — | Percorre as unidades com cursor e imprime capacidade e vagas disponíveis |
+
+### Decisões de projeto
+
+- **Maioridade em trigger:** o `CHECK` não consulta outra tabela, e a idade depende da data de nascimento em `PESSOA`. Por isso a regra usa function e trigger.
+- **Capacidade e conclusão de adoção em procedures:** o cadastro de resgates e a conclusão de adoções devem ser feitos por `prc_registrar_resgate` e `prc_concluir_adocao`, que aplicam as regras RN11 e RN10 e mantêm o status do animal consistente.
+- **Histórico automático:** a trigger de status grava `Status_Anterior` nulo no cadastro do animal e só registra atualizações em que o status realmente muda.
+
+### Exemplos de uso
+
+```sql
+SET SERVEROUTPUT ON
+
+-- Vagas disponíveis em uma unidade (ajuste o ID conforme a carga)
+SELECT fn_vagas_disponiveis(1) AS vagas FROM dual;
+
+-- Relatório de ocupação de todas as unidades
+EXEC prc_relatorio_ocupacao;
+
+-- Concluir uma adoção já aprovada (ajuste o ID conforme a carga)
+EXEC prc_concluir_adocao(1);
+```
+
+As demonstrações das regras estão em `06_testes.sql`.
 
 ---
 
 ## Testes
+
+Em desenvolvimento.
