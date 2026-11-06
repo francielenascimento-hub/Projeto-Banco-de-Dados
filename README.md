@@ -144,12 +144,9 @@ A modelagem engloba 14 entidades principais organizadas nos seguintes fluxos ope
 
 ```text
 .
-├── imagens/
-│   ├── modelo-conceitual.png                      # DER
-│   └── modelo-logico.png                          # Modelo lógico/relacional
 ├── README.md
-├── Modelo_Conceitual-ONG_de_Protecao_Animal.pdf   # DER
-├── Modelo_Logico-ONG_de_Protecao_Animal.pdf       # Modelo lógico/relacional
+├── Modelo Conceitual (DER).pdf                    # DER
+├── Modelo Lógico.pdf                              # Modelo lógico/relacional
 ├── Dicionario_de_Dados.md                         # Dicionário de dados
 ├── Regras_de_Negocio.md                           # Regras de negócio (RN01 a RN16)
 ├── 01_ddl_estrutura.sql                           # Tabelas, chaves, restrições e índices
@@ -231,8 +228,8 @@ DROP TABLE Endereco              CASCADE CONSTRAINTS PURGE;
 
 ## Documentação
 
-- [DER (Modelo Conceitual)](Modelo_Conceitual-ONG_de_Protecao_Animal.pdf)
-- [Modelo Lógico](Modelo_Logico-ONG_de_Protecao_Animal.pdf)
+- [DER (Modelo Conceitual)](Modelo%20Conceitual%20%28DER%29.pdf)
+- [Modelo Lógico](Modelo%20L%C3%B3gico.pdf)
 - [Dicionário de Dados](Dicionario_de_Dados.md)
 - [Regras de Negócio](Regras_de_Negocio.md)
 
@@ -256,7 +253,7 @@ O Modelo Conceitual do projeto foi desenvolvido para cobrir todo o ciclo operaci
 
 ### Diagrama de Entidade e Relacionamento (DER)
 
-![DER](./imagens/modelo-conceitual.png)
+📄 **[Abrir o DER em PDF](Modelo%20Conceitual%20%28DER%29.pdf)**
 
 ### Cardinalidades
 
@@ -305,7 +302,7 @@ Na conversão do DER para a estrutura relacional do projeto, as entidades e asso
 
 </div>
 
-![Modelo Lógico](imagens/modelo-logico.png)
+📄 **[Abrir o Modelo Lógico em PDF](Modelo%20L%C3%B3gico.pdf)**
 
 --- 
 
